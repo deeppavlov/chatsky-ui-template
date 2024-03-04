@@ -1,0 +1,11 @@
+{
+    "success": {
+      "cmd": "bash success_build.sh"
+    },
+    "failure": {
+      "cmd": "bash failed_build.sh"
+    },
+    "loop": {
+      "cmd": "bash looped_build.sh"
+    }
+}
