@@ -1,0 +1,14 @@
+[tool.poetry]
+name = {{ cookiecutter.project_slug }}
+version = {{ cookiecutter.version }}
+description = {{ cookiecutter.project_short_description }}
+authors = [{{ cookiecutter.full_name > cookiecutter.email }}]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+df_designer = { path = "../df_designer", develop = true } #TODO: change to just installing df_designer
+
+
+# TODO: chmod +x script.sh
