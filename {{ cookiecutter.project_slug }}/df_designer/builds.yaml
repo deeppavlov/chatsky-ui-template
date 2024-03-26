@@ -1,0 +1,15 @@
+- id: 43
+  preset_end_status: success
+  status: Completed
+  timestamp: '2024-03-19T15:27:45'
+  script_path: ../bot/scripts/build_43.json
+  log_path: ./logs/builds/20240319.log
+  runs:
+  - id: 13
+    preset_end_status: success
+    status: Completed
+    timestamp: '2024-03-19T15:50:05'
+  - id: 22
+    preset_end_status: success
+    status: Running
+    timestamp: '2024-03-19T17:03:22'
