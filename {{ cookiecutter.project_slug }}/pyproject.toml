@@ -8,8 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-df_designer = { path = "../df_designer_new/backend/df_designer", develop = true } #TODO: change to just installing df_designer
-dff = {extras = ["telegram"], version = "^0.7.0"}
+df-designer = { file = "../df_designer/dist/df_designer-0.1.0-py3-none-any.whl" }
 
 
 # TODO: chmod +x script.sh
