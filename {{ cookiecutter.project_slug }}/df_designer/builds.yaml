@@ -1,9 +1,9 @@
 - id: 43
   preset_end_status: success
   status: completed
-  timestamp: '2024-03-19T15:27:45'
+  timestamp: '2024-04-08T21:12:49'
   script_path: ../bot/scripts/build_43.json
-  log_path: ./logs/builds/20240319.log
+  log_path: df_designer/logs/builds/20240408/43_211249.log
   runs:
   - id: 13
     preset_end_status: success
