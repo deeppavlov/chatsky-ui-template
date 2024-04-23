@@ -1,0 +1,131 @@
+flows:
+- id: GLOBAL
+  name: Global
+  description: This is Global Flow
+  color: '#7000FF'
+  data:
+    nodes:
+    - id: 6ed8e4d8-5768-4300-9233-af1673625dcb
+      type: default_node
+      data:
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        name: Global node
+        response: Global response
+      position:
+        x: 0
+        'y': 0
+    edges: []
+    viewport:
+      x: 0
+      'y': 0
+      zoom: 1
+- name: flow1
+  description: ''
+  color: '#FF3366'
+  subflow: Global
+  id: ba8a4533-3090-4795-bdf0-52b50c3252a4
+  data:
+    nodes:
+    - id: flow1/LOCAL_NODE
+      type: default_node
+      data:
+        id: flow1/LOCAL_NODE
+        name: LOCAL NODE
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        response: Default local node response
+      position:
+        x: 0
+        'y': 0
+      width: 384
+      height: 169
+      positionAbsolute:
+        x: 0
+        'y': 0
+    - id: 8702922b-8c1b-4d7d-9010-cc2bea7848be
+      type: start_node
+      position:
+        x: 192
+        'y': 288
+      data:
+        id: 8702922b-8c1b-4d7d-9010-cc2bea7848be
+        name: Start Node
+        conditions:
+        - id: Start Node_1706bcb0-0915-4c11-8a76-c80fe980cc51
+          name: new_cnd
+          type: python
+          data:
+            priority: 1
+            transition_type: manual
+            python:
+              action: "def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n  print(\"\
+                kek\")\n  def say(value):\n    print(value)\n  say('kek')\nreturn\
+                \ True"
+        - id: Start Node_3fa32c5a-e3f7-4bdd-a54c-d28455298e5d
+          name: new_cnd_2
+          type: python
+          data:
+            priority: 1
+            transition_type: forward
+            python:
+              action: 'def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:
+
+                # enter your python condition:
+
+                return True'
+        - id: Start Node_0e1a8b94-ae97-4bc0-9257-b8e447d6a9ce
+          name: new_cnd_3
+          type: python
+          data:
+            priority: 1
+            transition_type: fallback
+            python:
+              action: 'def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:
+
+                # enter your python condition:
+
+                return True'
+        global_conditions: []
+        local_conditions: []
+        response: Start response
+        to: ''
+      width: 384
+      height: 320
+      selected: false
+      positionAbsolute:
+        x: 192
+        'y': 288
+      dragging: false
+    - id: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
+      type: default_node
+      position:
+        x: 864
+        'y': 288
+      data:
+        id: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
+        name: Default Node
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        response: Default response
+        to: ''
+      width: 384
+      height: 169
+      selected: false
+      positionAbsolute:
+        x: 864
+        'y': 288
+      dragging: false
+    edges:
+    - source: 8702922b-8c1b-4d7d-9010-cc2bea7848be
+      sourceHandle: Start Node_1706bcb0-0915-4c11-8a76-c80fe980cc51
+      target: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
+      targetHandle: null
+      id: reactflow__edge-8702922b-8c1b-4d7d-9010-cc2bea7848beStart Node_1706bcb0-0915-4c11-8a76-c80fe980cc51-539f1903-35cd-4df4-aa5e-9bb5f158c51c
+    viewport:
+      x: 175.5948014151403
+      'y': 120.2847881754642
+      zoom: 0.7484500938304347
