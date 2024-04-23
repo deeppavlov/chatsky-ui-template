@@ -61,8 +61,8 @@ flows:
             priority: 1
             transition_type: manual
             python:
-              action: "def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n  print(\"\
-                kek\")\n  def say(value):\n    print(value)\n  say('kek')\nreturn\
+              action: "def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n    print(\"\
+                kek\")\n    def say(value):\n        print(value)\n    say('kek')\n    return\
                 \ True"
         - id: Start Node_3fa32c5a-e3f7-4bdd-a54c-d28455298e5d
           name: new_cnd_2
