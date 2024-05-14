@@ -21,17 +21,17 @@ flows:
       x: 0
       'y': 0
       zoom: 1
-- name: flow1
+- name: flow2
   description: ''
   color: '#FF3366'
   subflow: Global
   id: ba8a4533-3090-4795-bdf0-52b50c3252a4
   data:
     nodes:
-    - id: flow1/LOCAL_NODE
+    - id: flow2/LOCAL_NODE
       type: default_node
       data:
-        id: flow1/LOCAL_NODE
+        id: flow2/LOCAL_NODE
         name: LOCAL NODE
         conditions: []
         global_conditions: []
