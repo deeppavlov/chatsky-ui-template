@@ -53,6 +53,8 @@ flows:
       data:
         id: 8702922b-8c1b-4d7d-9010-cc2bea7848be
         name: Start Node
+        flags:
+          - start
         conditions:
         - id: Start Node_1706bcb0-0915-4c11-8a76-c80fe980cc51
           name: new_cnd
