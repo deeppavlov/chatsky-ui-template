@@ -1,6 +1,6 @@
 - id: 22
   build_id: 43
   preset_end_status: success
-  status: running
+  status: completed
   timestamp: '2024-04-08T12:55:30'
   log_path: df_designer/logs/runs/20240408/22_125530.log
