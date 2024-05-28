@@ -45,89 +45,68 @@ flows:
       positionAbsolute:
         x: 0
         'y': 0
-    - id: 8702922b-8c1b-4d7d-9010-cc2bea7848be
-      type: start_node
+      selected: false
+      dragging: false
+    - id: 02626c19-fa04-4aed-bebf-e9ae1594bad3
+      type: default_node
       position:
-        x: 192
-        'y': 288
+        x: 0
+        'y': 384
       data:
-        id: 8702922b-8c1b-4d7d-9010-cc2bea7848be
-        name: Start Node
+        id: 02626c19-fa04-4aed-bebf-e9ae1594bad3
+        name: NODE_1
         flags:
-          - start
+        - start
+        - fallback
         conditions:
-        - id: Start Node_1706bcb0-0915-4c11-8a76-c80fe980cc51
+        - id: Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200
           name: new_cnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n    print(\"\
-                kek\")\n    def say(value):\n        print(value)\n    say('kek')\n    return\
-                \ True"
-        - id: Start Node_3fa32c5a-e3f7-4bdd-a54c-d28455298e5d
-          name: new_cnd_2
-          type: python
-          data:
-            priority: 1
-            transition_type: forward
-            python:
-              action: 'def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:
-
-                # enter your python condition:
-
-                return True'
-        - id: Start Node_0e1a8b94-ae97-4bc0-9257-b8e447d6a9ce
-          name: new_cnd_3
-          type: python
-          data:
-            priority: 1
-            transition_type: fallback
-            python:
-              action: 'def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:
-
-                # enter your python condition:
-
-                return True'
+              action: "def new_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n  \
+                \  return True"
         global_conditions: []
         local_conditions: []
-        response: Start response
+        response: Hello
         to: ''
       width: 384
-      height: 320
+      height: 214
       selected: false
-      positionAbsolute:
-        x: 192
-        'y': 288
       dragging: false
-    - id: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
+      positionAbsolute:
+        x: 0
+        'y': 384
+    - id: e100867e-70f6-4a97-b649-018e4ef3af1d
       type: default_node
       position:
-        x: 864
-        'y': 288
+        x: 672
+        'y': 384
       data:
-        id: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
-        name: Default Node
+        id: e100867e-70f6-4a97-b649-018e4ef3af1d
+        name: NODE_2
+        flags: []
         conditions: []
         global_conditions: []
         local_conditions: []
-        response: Default response
+        response: RESPONSE
         to: ''
       width: 384
       height: 169
       selected: false
       positionAbsolute:
-        x: 864
-        'y': 288
+        x: 672
+        'y': 384
       dragging: false
     edges:
-    - source: 8702922b-8c1b-4d7d-9010-cc2bea7848be
-      sourceHandle: Start Node_1706bcb0-0915-4c11-8a76-c80fe980cc51
-      target: 539f1903-35cd-4df4-aa5e-9bb5f158c51c
+    - source: 02626c19-fa04-4aed-bebf-e9ae1594bad3
+      sourceHandle: Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200
+      target: e100867e-70f6-4a97-b649-018e4ef3af1d
       targetHandle: null
-      id: reactflow__edge-8702922b-8c1b-4d7d-9010-cc2bea7848beStart Node_1706bcb0-0915-4c11-8a76-c80fe980cc51-539f1903-35cd-4df4-aa5e-9bb5f158c51c
+      id: reactflow__edge-02626c19-fa04-4aed-bebf-e9ae1594bad3Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200-e100867e-70f6-4a97-b649-018e4ef3af1d
     viewport:
-      x: 175.5948014151403
-      'y': 120.2847881754642
-      zoom: 0.7484500938304347
+      x: 198.42855321259822
+      'y': 60.07594748332889
+      zoom: 0.676013300962128
