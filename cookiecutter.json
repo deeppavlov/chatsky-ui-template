@@ -1,5 +1,5 @@
 {
-    "full_name": "Rami Mashkouk",
+    "full_name": "e.g. Rami Mashkouk",
     "email": "rami@example.com",
     "project_name": "DF-Designer Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
