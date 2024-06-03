@@ -4,5 +4,6 @@
     "project_name": "DF-Designer Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_short_description": "DF-Designer Project is a template",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "dflowd_version": "0.1.0-beta.0"
 }
