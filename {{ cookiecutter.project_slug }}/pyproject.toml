@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-dflowd = { file = "../backend/df_designer/dist/df_designer-{{ cookiecutter.dflowd_version }}-py3-none-any.whl" }
+dflowd = { file = "../backend/df_designer/dist/dflowd-{{ cookiecutter.dflowd_version }}-py3-none-any.whl" }
 
 
 # TODO: chmod +x script.sh
