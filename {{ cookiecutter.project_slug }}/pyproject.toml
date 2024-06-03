@@ -2,13 +2,13 @@
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.project_short_description }}"
-authors = ["{{ cookiecutter.full_name > cookiecutter.email }}"]
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
 readme = "README.md"
 
 
 [tool.poetry.dependencies]
 python = "^3.10"
-dflowd = { file = "../backend/df_designer/dist/df_designer-0.1.0-py3-none-any.whl" }
+dflowd = { file = "../backend/df_designer/dist/df_designer-{{ cookiecutter.dflowd_version }}-py3-none-any.whl" }
 
 
 # TODO: chmod +x script.sh
