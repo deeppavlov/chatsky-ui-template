@@ -1,4 +1,3 @@
-from dff.script import Context
 from dff import Pipeline
 from dff.script import Context, TRANSITIONS, RESPONSE, Message
 import dff.script.conditions as cnd

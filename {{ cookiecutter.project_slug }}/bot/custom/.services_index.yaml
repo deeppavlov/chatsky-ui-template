@@ -1,0 +1,3 @@
+is_upper_case:
+  type: condition
+  lineno: 5
