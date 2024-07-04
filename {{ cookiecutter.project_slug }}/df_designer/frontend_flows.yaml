@@ -16,7 +16,7 @@ flows:
           name: global
           type: text
           data:
-            text: Global
+            - text: Global
       position:
         x: 0
         'y': 0
@@ -44,7 +44,7 @@ flows:
           name: hello
           type: text
           data:
-            text: Hello
+            - text: Hello
       position:
         x: 0
         'y': 0
@@ -83,11 +83,11 @@ flows:
           type: python
           name: resp20
           data:
-            transition_type: manual
-            python:
-              action: "def resp20(ctx: Context, pipeline: Pipeline) -> bool:\n  \
-                \  if ctx.last_request.text.isupper():\n        return Message('Yo')\n    else:\n\
-                \        return Message('whatever')"
+            - transition_type: manual
+              python:
+                action: "def resp20(ctx: Context, pipeline: Pipeline) -> bool:\n  \
+                  \  if ctx.last_request.text.isupper():\n        return Message('Yo')\n    else:\n\
+                  \        return Message('whatever')"
         to: ''
       width: 384
       height: 214
@@ -113,10 +113,8 @@ flows:
           name: anything
           type: choice
           data:
-            - type: text
-              text: RESPONSE yo
-            - type: text
-              text: what now?
+            - text: RESPONSE yo
+            - text: what now?
         to: ''
       width: 384
       height: 169
