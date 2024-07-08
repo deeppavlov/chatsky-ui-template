@@ -12,7 +12,11 @@ flows:
         global_conditions: []
         local_conditions: []
         name: Global node
-        response: Global response
+        response:
+          name: global
+          type: text
+          data:
+            - text: Global
       position:
         x: 0
         'y': 0
@@ -36,7 +40,11 @@ flows:
         conditions: []
         global_conditions: []
         local_conditions: []
-        response: Default local node response
+        response:
+          name: hello
+          type: text
+          data:
+            - text: Hello
       position:
         x: 0
         'y': 0
@@ -70,7 +78,16 @@ flows:
                 \  return True"
         global_conditions: []
         local_conditions: []
-        response: Hello
+        response:
+          id: d1sd2f7f-d49b-43fe-b03b-ff32d27ce200
+          type: python
+          name: resp20
+          data:
+            - transition_type: manual
+              python:
+                action: "def resp20(ctx: Context, pipeline: Pipeline) -> bool:\n  \
+                  \  if ctx.last_request.text.isupper():\n        return Message('Yo')\n    else:\n\
+                  \        return Message('whatever')"
         to: ''
       width: 384
       height: 214
@@ -91,7 +108,13 @@ flows:
         conditions: []
         global_conditions: []
         local_conditions: []
-        response: RESPONSE
+        response:
+          id: Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200
+          name: anything
+          type: choice
+          data:
+            - text: RESPONSE yo
+            - text: what now?
         to: ''
       width: 384
       height: 169
