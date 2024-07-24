@@ -105,7 +105,12 @@ flows:
         id: e100867e-70f6-4a97-b649-018e4ef3af1d
         name: NODE_2
         flags: []
-        conditions: []
+        conditions:
+          - id: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
+            name: username_cnd
+            type: slot
+            data:
+              slot-id: username-id
         global_conditions: []
         local_conditions: []
         response:
@@ -129,7 +134,33 @@ flows:
       target: e100867e-70f6-4a97-b649-018e4ef3af1d
       targetHandle: null
       id: reactflow__edge-02626c19-fa04-4aed-bebf-e9ae1594bad3Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200-e100867e-70f6-4a97-b649-018e4ef3af1d
+    - source: e100867e-70f6-4a97-b649-018e4ef3af1d
+      sourceHandle: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
+      target: 02626c19-fa04-4aed-bebf-e9ae1594bad3
+      targetHandle: null
+      id: reactflow__edge-02626c19-fa04-4aed-bebf-e9ae1594bad3Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200-e100867e-70f6-4a97-b649-018e4ef3af1d
     viewport:
       x: 198.42855321259822
       'y': 60.07594748332889
       zoom: 0.676013300962128
+slots:
+  person:
+    id: "person-id"
+    programmer:
+      id: "prog-id"
+      username:
+        id: "username-id"
+        regexp: "username is ([a-zA-Z]+)"
+        match_group_idx: 1
+      email:
+        id: "email-id"
+        regexp: "email is ([a-z@.A-Z]+)"
+        match_group_idx: 1
+  friend:
+    id: "friend-id"
+    first_name:
+      id: "fn-id"
+      regexp: "^[A-Z][a-z]+?(?= )"
+    last_name:
+      id: "ls-id"
+      regexp: "(?<= )[A-Z][a-z]+"
