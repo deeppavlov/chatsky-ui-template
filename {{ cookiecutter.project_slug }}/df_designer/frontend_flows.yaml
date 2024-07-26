@@ -63,9 +63,7 @@ flows:
       data:
         id: 02626c19-fa04-4aed-bebf-e9ae1594bad3
         name: NODE_1
-        flags:
-        - start
-        - fallback
+        flags: []
         conditions:
         - id: Default Node_d18c2f7f-d49b-43fe-b03b-ff32d27ce200
           name: new_cnd
@@ -104,13 +102,16 @@ flows:
       data:
         id: e100867e-70f6-4a97-b649-018e4ef3af1d
         name: NODE_2
-        flags: []
+        flags:
+          - start
+          - fallback
         conditions:
           - id: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
             name: username_cnd
             type: slot
             data:
-              slot-id: username-id
+              slot_id: username-id
+              priority: 1
         global_conditions: []
         local_conditions: []
         response:
@@ -146,21 +147,32 @@ flows:
 slots:
   person:
     id: "person-id"
+    type: "GroupSlot"
     programmer:
       id: "prog-id"
+      type: "GroupSlot"
       username:
         id: "username-id"
+        type: "RegexpSlot"
         regexp: "username is ([a-zA-Z]+)"
         match_group_idx: 1
       email:
         id: "email-id"
+        type: "RegexpSlot"
         regexp: "email is ([a-z@.A-Z]+)"
         match_group_idx: 1
+    admin:
+      id: "admin-id"
+      type: "RegexpSlot"
+      regexp: "access to ([a-zA-Z]+)"
   friend:
     id: "friend-id"
+    type: "GroupSlot"
     first_name:
       id: "fn-id"
+      type: "RegexpSlot"
       regexp: "^[A-Z][a-z]+?(?= )"
     last_name:
       id: "ls-id"
+      type: "RegexpSlot"
       regexp: "(?<= )[A-Z][a-z]+"
