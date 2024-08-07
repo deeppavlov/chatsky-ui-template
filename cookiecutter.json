@@ -1,9 +1,8 @@
 {
-    "full_name": "Rami Mashkouk",
-    "email": "rami@example.com",
-    "project_name": "DF-Designer Project",
+    "full_name": "Your name",
+    "email": "name@example.com",
+    "project_name": "Chatsky Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "DF-Designer Project is a template",
-    "version": "0.1.0",
-    "dflowd_version": "0.1.0b1"
+    "project_short_description": "Chatsky Project is a template",
+    "version": "0.1.0"
 }
