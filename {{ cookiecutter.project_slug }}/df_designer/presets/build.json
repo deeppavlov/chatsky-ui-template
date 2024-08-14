@@ -1,11 +1,11 @@
 {
-    "success": {
-      "cmd": "bash builds/success_build.sh"
-    },
-    "failure": {
-      "cmd": "bash builds/failed_build.sh"
-    },
-    "loop": {
-      "cmd": "bash builds/looped_build.sh"
-    }
+  "success": {
+    "cmd": "bash $work_directory/builds/success_build.sh $build_id"
+  },
+  "failure": {
+    "cmd": "bash $work_directory/builds/failed_build.sh"
+  },
+  "loop": {
+    "cmd": "bash $work_directory/builds/looped_build.sh"
+  }
 }
