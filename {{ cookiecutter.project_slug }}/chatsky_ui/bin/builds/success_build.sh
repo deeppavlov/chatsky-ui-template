@@ -6,6 +6,6 @@ fi
 
 # Assign the first argument to the variable
 build_id=$1
-project_dir=$(dirname $(dirname $(realpath $0)))
+project_dir=$(dirname $(dirname $(dirname $(dirname $(realpath $0)))))
 
 chatsky.ui build_scenario $build_id --project-dir $project_dir
