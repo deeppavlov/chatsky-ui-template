@@ -1,11 +1,11 @@
 {
   "success": {
-    "cmd": "bash $work_directory/builds/success_build.sh $build_id"
+    "cmd": "bash $work_directory/chatsky_ui/bin/builds/success_build.sh $build_id"
   },
   "failure": {
-    "cmd": "bash $work_directory/builds/failed_build.sh"
+    "cmd": "bash $work_directory/chatsky_ui/bin/builds/failed_build.sh"
   },
   "loop": {
-    "cmd": "bash $work_directory/builds/looped_build.sh"
+    "cmd": "bash $work_directory/chatsky_ui/bin/builds/looped_build.sh"
   }
 }
