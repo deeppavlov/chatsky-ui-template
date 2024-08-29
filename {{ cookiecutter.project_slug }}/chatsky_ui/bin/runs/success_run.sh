@@ -6,6 +6,6 @@ fi
 
 # Assign the first argument to the variable
 build_id=$1
+project_dir=$(dirname $(dirname $(dirname $(dirname $(realpath $0)))))
 
-dflowd run_scenario $build_id --project-dir .
-# poetry run df_d run
+chatsky.ui run_scenario $build_id --project-dir $project_dir

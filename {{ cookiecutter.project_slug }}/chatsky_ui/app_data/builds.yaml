@@ -3,7 +3,7 @@
   status: completed
   timestamp: '2024-04-08T21:12:49'
   script_path: ../bot/scripts/build_43.json
-  log_path: df_designer/logs/builds/20240408/43_211249.log
+  log_path: chatsky_ui/logs/builds/20240408/43_211249.log
   run_ids:
   - id: 13
   - id: 22
