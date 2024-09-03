@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 import click
 
-from dff import Pipeline
+from chatsky import Pipeline
 
 
 logging.basicConfig(level=logging.INFO)
