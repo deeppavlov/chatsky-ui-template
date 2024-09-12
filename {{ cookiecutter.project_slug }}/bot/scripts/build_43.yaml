@@ -1,19 +1,54 @@
 CONFIG:
-  custom_dir: ../custom
-  start_label: [flow, node]
-flow:
-  node:
+  custom_dir: /home/rami1996/ui3/my_project/bot/custom
+  start_label:
+  - demo
+  - node1
+  fallback_label:
+  - demo
+  - Default Node
+Global:
+  Global node:
     RESPONSE:
-      dff.rsp.choice:
-        - dff.Message:
-            text: "Hi"
-            attachments:
-              - dff.Link:
-                  source: https://github.com/deeppavlov/dialog_flow_framework
-                  title: DFF
-        - dff.Message: "message"
+      dff.Message:
+        text: Global node response
+    TRANSITIONS: []
+demo:
+  node1:
+    RESPONSE:
+      dff.Message:
+        text: hey from node1
     TRANSITIONS:
-      - lbl:
-          [flow, node, 3]
-        cnd:
-          custom_dir.conditions.is_upper_case
+    - lbl:
+      - demo
+      - node2
+      - 1
+      cnd: custom_dir.conditions.hello_cnd
+  node2:
+    RESPONSE: custom_dir.responses.default_response2
+    TRANSITIONS:
+    - lbl:
+      - demo2
+      - hi_demo2
+      - 1
+      cnd: custom_dir.conditions.hi_cnd
+    - lbl:
+      - demo
+      - Default Node
+      - 1
+      cnd: custom_dir.conditions.all_good
+  Default Node:
+    RESPONSE:
+      dff.Message:
+        text: Why not just taking a nap?
+    TRANSITIONS:
+    - lbl:
+      - demo
+      - node1
+      - 1
+      cnd: custom_dir.conditions.all_good2
+demo2:
+  hi_demo2:
+    RESPONSE:
+      dff.Message:
+        text: Hi from demo2
+    TRANSITIONS: []
