@@ -1,19 +1,58 @@
-CONFIG:
-  custom_dir: ../custom
-  start_label: [flow, node]
-flow:
-  node:
-    RESPONSE:
-      chatsky.rsp.choice:
-        - chatsky.Message:
-            text: "Hi"
-            attachments:
-              - chatsky.Link:
-                  source: https://github.com/deeppavlov/dialog_flow_framework
-                  title: Chatsky
-        - chatsky.Message: "message"
-    TRANSITIONS:
-      - lbl:
-          [flow, node, 3]
+start_label:
+- demo
+- node1
+fallback_label:
+- demo
+- Default Node
+script:
+  Global:
+    Global node:
+      RESPONSE:
+        chatsky.Message:
+          text: Global node response
+      TRANSITIONS: []
+  demo:
+    node1:
+      RESPONSE:
+        chatsky.Message:
+          text: hey from node1
+      TRANSITIONS:
+      - dst:
+        - demo
+        - node2
+        priority: 1
         cnd:
-          custom_dir.conditions.is_upper_case
+          chatsky.cnd.ExactMatch: "hello"
+    node2:
+      RESPONSE:
+        custom.responses.DefaultResponse2:
+      TRANSITIONS:
+      - dst:
+        - demo2
+        - hi_demo2
+        priority: 1
+        cnd:
+          custom.conditions.IsUpperCase:
+      - dst:
+        - demo
+        - Default Node
+        priority: 1
+        cnd:
+          custom.conditions.AllGood:
+    Default Node:
+      RESPONSE:
+        chatsky.Message:
+          text: Why not just taking a nap?
+      TRANSITIONS:
+      - dst:
+        - demo
+        - node1
+        cnd:
+          custom.conditions.AllGood2:
+        priority: 1
+  demo2:
+    hi_demo2:
+      RESPONSE:
+        chatsky.Message:
+          text: Hi from demo2
+      TRANSITIONS: []
