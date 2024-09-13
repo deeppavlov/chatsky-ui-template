@@ -46,15 +46,13 @@ flows:
         - start
         conditions:
         - id: a17db3a6-40b8-42e9-b999-7b400693e5b8
-          name: hello_cnd
+          name: HelloCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "def hello_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n\
-                \  # enter your python condition:\n    return cnd.exact_match(Message(\"\
-                hello\"))(ctx, pipeline)"
+              action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return await cnd.ExactMatch('hello')(ctx)"
         global_conditions: []
         local_conditions: []
         response:
@@ -83,35 +81,37 @@ flows:
         name: node2
         flags: []
         conditions:
+        - id: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
+          name: username_cnd
+          type: slot
+          data:
+            slot: username-id
+            priority: 1
         - id: fe49eeb2-d685-485b-90d2-a09abced698d
-          name: hi_cnd
+          name: HiCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "def hi_cnd(ctx: Context, pipeline: Pipeline) -> bool:\n  #\
-                \ enter your python condition:\n    return cnd.exact_match(Message(\"\
-                hi\"))(ctx, pipeline)"
+              action: "class HiCnd(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return await cnd.ExactMatch('hi')(ctx)"
         - id: 3576285b-6ca1-416f-8d26-67b60917f9e5
-          name: all_good
+          name: AllGood
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "def all_good(ctx: Context, pipeline: Pipeline) -> bool:\n \
-                \ # enter your python condition:\n    return True"
+              action: "class AllGood(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return True"
         global_conditions: []
         local_conditions: []
         response:
-          name: default_response2
+          name: DefaultResponse
           type: python
           data:
           - priority: 1
             python:
-              action: "def default_response2(ctx: Context, pipeline: Pipeline) ->\
-                \ Message(\"\"):\n  # enter your python response:\n    return Message('Hello')"
+              action: "class DefaultResponse(BaseResponse):\n    async def call(self, ctx: Context) -> Message:\n        return Message('Hello')"
         transition:
           target_flow: ''
           target_node: ''
@@ -160,14 +160,13 @@ flows:
         - fallback
         conditions:
         - id: 35dbac73-526e-487b-a41f-f579c8547275
-          name: all_good2
+          name: AllGood2
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "def all_good2(ctx: Context, pipeline: Pipeline) -> bool:\n\
-                \  # enter your python condition:\n    return True"
+              action: "class AllGood2(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return True"
         global_conditions: []
         local_conditions: []
         response:
@@ -187,6 +186,11 @@ flows:
         x: 288
         'y': 768
     edges:
+    - id: reactflow__edge-02626c19-fa04-4aed-bebf-e9ae1594bad3Default
+      source: ae588d2e-b027-47d3-9d4d-4f8340d87802
+      sourceHandle: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
+      target: c25995ce-34cf-4d54-9658-2af423c39048
+      targetHandle: null
     - id: 662f3f45-2354-4c6b-9cee-8c3e130dca90
       source: 2c8fef7e-c5a1-4ad9-8b7c-f872f8fa2cec
       sourceHandle: 0f343496-d9dc-4f8b-ac24-1b64c7c5b9da
@@ -259,3 +263,35 @@ flows:
       x: 0
       'y': 0
       zoom: 1
+slots:
+  person:
+    id: "person-id"
+    type: "GroupSlot"
+    programmer:
+      id: "prog-id"
+      type: "GroupSlot"
+      username:
+        id: "username-id"
+        type: "RegexpSlot"
+        regexp: "username is ([a-zA-Z]+)"
+        match_group_idx: 1
+      email:
+        id: "email-id"
+        type: "RegexpSlot"
+        regexp: "email is ([a-z@.A-Z]+)"
+        match_group_idx: 1
+    admin:
+      id: "admin-id"
+      type: "RegexpSlot"
+      regexp: "access to ([a-zA-Z]+)"
+  friend:
+    id: "friend-id"
+    type: "GroupSlot"
+    first_name:
+      id: "fn-id"
+      type: "RegexpSlot"
+      regexp: "^[A-Z][a-z]+?(?= )"
+    last_name:
+      id: "ls-id"
+      type: "RegexpSlot"
+      regexp: "(?<= )[A-Z][a-z]+"
