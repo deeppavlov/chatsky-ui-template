@@ -1,23 +1,26 @@
 flows:
 - id: GLOBAL
   name: Global
-  description: This is Global Flow
-  color: '#7000FF'
+  description: This is Global Flow. It will be able to use soon...
+  color: '#3300FF'
   data:
     nodes:
-    - id: f90876fc-b4a1-4d8a-bb1d-8b2ff058836b
+    - id: 1423040b-eb65-4c3d-b7cc-98835cb5319b
       type: default_node
       data:
+        id: GLOBAL_NODE
         flags: []
         conditions: []
         global_conditions: []
         local_conditions: []
         name: Global node
         response:
+          id: GLOBAL_NODE_RESPONSE
           name: global_response
           type: text
           data:
           - text: Global node response
+            priority: 1
       position:
         x: 0
         'y': 0
@@ -26,266 +29,262 @@ flows:
       x: 0
       'y': 0
       zoom: 1
-- name: demo
+- name: Greeting
   description: ''
-  color: '#CC66CC'
+  color: '#00CC99'
   subflow: Global
-  id: f29e3e45-6f63-495d-8b40-3d0333cb81fd
+  id: flow_b7d40362-31dc-4473-aa98-d14d0a3113f8
   data:
     nodes:
-    - id: c25995ce-34cf-4d54-9658-2af423c39048
+    - id: default_node_b729a99a-740f-47d4-be6c-39d122639a41
       type: default_node
       position:
         x: 192
-        'y': 96
+        'y': 384
+      dragHandle: .custom-drag-handle
       data:
-        id: c25995ce-34cf-4d54-9658-2af423c39048
-        name: node1
+        id: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+        name: Beginning of conversation
         flags:
         - start
+        - fallback
         conditions:
-        - id: a17db3a6-40b8-42e9-b999-7b400693e5b8
-          name: HelloCnd
+        - id: condition_43773562-f93e-4635-ba0a-43e115da64b7
+          name: hello_cnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return await cnd.ExactMatch('hello')(ctx)"
+              action: "class hello_cnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"hello\"\
+                )(ctx)"
         global_conditions: []
         local_conditions: []
         response:
-          name: hey1
+          name: hello_response
           type: text
           data:
-          - text: hey from node1
-        transition:
-          target_flow: ''
-          target_node: ''
-      width: 384
-      height: 213
-      positionAbsolute:
-        x: 192
-        'y': 96
+          - priority: 1
+            text: Hello!
+      measured:
+        width: 384
+        height: 228
       selected: false
-      dragging: false
-    - id: ae588d2e-b027-47d3-9d4d-4f8340d87802
+    - id: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
       type: default_node
       position:
         x: 768
-        'y': 288
+        'y': 192
+      dragHandle: .custom-drag-handle
       data:
-        id: ae588d2e-b027-47d3-9d4d-4f8340d87802
-        name: node2
+        id: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+        name: Weather discussion
         flags: []
         conditions:
-        - id: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
-          name: username_cnd
-          type: slot
-          data:
-            slot: username-id
-            priority: 1
-        - id: fe49eeb2-d685-485b-90d2-a09abced698d
-          name: HiCnd
+        - id: condition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d
+          name: yes_cnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class HiCnd(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return await cnd.ExactMatch('hi')(ctx)"
-        - id: 3576285b-6ca1-416f-8d26-67b60917f9e5
-          name: AllGood
+              action: "class yes_cnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
+        - id: condition_7b2bc7e8-4242-45c1-8ec9-99a149704582
+          name: no_cnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class AllGood(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return True"
+              action: "class no_cnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
         global_conditions: []
         local_conditions: []
         response:
-          name: DefaultResponse
-          type: python
+          name: pizza_question
+          type: text
           data:
-          - python:
-              action: "class DefaultResponse(BaseResponse):\n    async def call(self, ctx: Context) -> Message:\n        return Message('Hello')"
-        transition:
-          target_flow: ''
-          target_node: ''
-      width: 384
-      height: 267
+          - priority: 1
+            text: Do you want a pizza?
+      measured:
+        width: 384
+        height: 281
       selected: false
       dragging: false
-      positionAbsolute:
-        x: 768
-        'y': 288
-    - id: 367c9e4d-9766-4657-b839-4009558ed27a
+    - id: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
+      type: default_node
+      position:
+        x: 1344
+        'y': 480
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
+        name: Question about work
+        flags: []
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: bye_response
+          type: text
+          data:
+          - priority: 1
+            text: Okay, bye!
+      measured:
+        width: 384
+        height: 183
+      selected: false
+      dragging: false
+    - id: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
       type: link_node
       position:
         x: 1344
-        'y': 576
+        'y': 192
       data:
-        id: 367c9e4d-9766-4657-b839-4009558ed27a
+        id: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
         name: Link
-        flags: []
-        conditions: []
-        global_conditions: []
-        local_conditions: []
-        response:
-          name: Link response
-          type: text
-          data:
-          - text: Link response
         transition:
-          target_flow: demo2
-          target_node: dd414f3d-e456-4353-a334-f04b44fde529
-      width: 384
-      height: 101
-      positionAbsolute:
-        x: 1344
-        'y': 576
-    - id: 8408b7ff-e4e9-4e08-ab43-2e90a43920c2
+          target_flow: Order
+          target_node: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
+          is_configured: true
+      measured:
+        width: 384
+        height: 102
+      selected: false
+      dragging: false
+    edges:
+    - source: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      sourceHandle: condition_43773562-f93e-4635-ba0a-43e115da64b7
+      target: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+      type: default
+      id: xy-edge__default_node_b729a99a-740f-47d4-be6c-39d122639a41condition_43773562-f93e-4635-ba0a-43e115da64b7-default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+    - source: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+      sourceHandle: condition_7b2bc7e8-4242-45c1-8ec9-99a149704582
+      target: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
+      type: default
+      id: xy-edge__default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721acondition_7b2bc7e8-4242-45c1-8ec9-99a149704582-default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
+    - source: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+      sourceHandle: condition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d
+      target: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
+      type: default
+      id: xy-edge__default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721acondition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d-link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
+    viewport:
+      x: -10.295955750421058
+      'y': 189.6832588410827
+      zoom: 0.5897290855183465
+- name: Order
+  description: ''
+  color: '#FFCC00'
+  subflow: Global
+  id: flow_1c29976e-de99-493d-8b74-bfedd9427313
+  data:
+    nodes:
+    - id: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
       type: default_node
       position:
         x: 288
-        'y': 768
+        'y': 384
+      dragHandle: .custom-drag-handle
       data:
-        id: 8408b7ff-e4e9-4e08-ab43-2e90a43920c2
-        name: Default Node
-        flags:
-        - fallback
+        id: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
+        name: Order pizza
+        flags: []
         conditions:
-        - id: 35dbac73-526e-487b-a41f-f579c8547275
-          name: AllGood2
+        - id: condition_e1232013-7246-4a14-8d78-50493e481cbf
+          name: yes_cnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class AllGood2(BaseCondition):\n    async def call(self, ctx: Context) -> bool:\n        return True"
+              action: "class yes_cnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
+        - id: condition_4fb1760b-e20b-4e3b-ae7e-1b96ad028009
+          name: no_cnd
+          type: python
+          data:
+            priority: 1
+            transition_type: manual
+            python:
+              action: "class no_cnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
         global_conditions: []
         local_conditions: []
         response:
-          name: default_response
+          name: cheese_question
           type: text
           data:
-          - text: Why not just taking a nap?
-        transition:
-          target_flow: ''
-          target_node: ''
-      width: 384
-      height: 213
+          - priority: 1
+            text: Some cheese in pizza?
+      measured:
+        width: 384
+        height: 281
       selected: false
-      dragging: false
-      positionAbsolute:
-        x: 288
-        'y': 768
-    edges:
-    - id: reactflow__edge-02626c19-fa04-4aed-bebf-e9ae1594bad3Default
-      source: ae588d2e-b027-47d3-9d4d-4f8340d87802
-      sourceHandle: Default Node_d18c547f-d49b-43fe-b03b-ff32d27ce200
-      target: c25995ce-34cf-4d54-9658-2af423c39048
-      targetHandle: null
-    - id: 662f3f45-2354-4c6b-9cee-8c3e130dca90
-      source: 2c8fef7e-c5a1-4ad9-8b7c-f872f8fa2cec
-      sourceHandle: 0f343496-d9dc-4f8b-ac24-1b64c7c5b9da
-      target: 48ca2031-3ab7-4700-bd04-376011736b86
-    - source: c25995ce-34cf-4d54-9658-2af423c39048
-      sourceHandle: a17db3a6-40b8-42e9-b999-7b400693e5b8
-      target: ae588d2e-b027-47d3-9d4d-4f8340d87802
-      targetHandle: null
-      id: reactflow__edge-c25995ce-34cf-4d54-9658-2af423c39048a17db3a6-40b8-42e9-b999-7b400693e5b8-ae588d2e-b027-47d3-9d4d-4f8340d87802
-    - source: ae588d2e-b027-47d3-9d4d-4f8340d87802
-      sourceHandle: fe49eeb2-d685-485b-90d2-a09abced698d
-      target: 367c9e4d-9766-4657-b839-4009558ed27a
-      targetHandle: null
-      id: reactflow__edge-ae588d2e-b027-47d3-9d4d-4f8340d87802fe49eeb2-d685-485b-90d2-a09abced698d-367c9e4d-9766-4657-b839-4009558ed27a
-    - source: ae588d2e-b027-47d3-9d4d-4f8340d87802
-      sourceHandle: 3576285b-6ca1-416f-8d26-67b60917f9e5
-      target: 8408b7ff-e4e9-4e08-ab43-2e90a43920c2
-      targetHandle: null
-      id: reactflow__edge-ae588d2e-b027-47d3-9d4d-4f8340d878023576285b-6ca1-416f-8d26-67b60917f9e5-8408b7ff-e4e9-4e08-ab43-2e90a43920c2
-    - source: 8408b7ff-e4e9-4e08-ab43-2e90a43920c2
-      sourceHandle: 35dbac73-526e-487b-a41f-f579c8547275
-      target: c25995ce-34cf-4d54-9658-2af423c39048
-      targetHandle: null
-      id: reactflow__edge-8408b7ff-e4e9-4e08-ab43-2e90a43920c235dbac73-526e-487b-a41f-f579c8547275-c25995ce-34cf-4d54-9658-2af423c39048
-    viewport:
-      x: -74.49896192979236
-      'y': 158.66700831413743
-      zoom: 0.3834960988023025
-- name: demo2
-  description: ''
-  color: '#FFCC00'
-  subflow: Global
-  id: b4d21337-dd2f-420f-af78-7e213e5fd22b
-  data:
-    nodes:
-    - id: dd414f3d-e456-4353-a334-f04b44fde529
+    - id: default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
       type: default_node
       position:
-        x: 288
-        'y': 192
+        x: 864
+        'y': 384
+      dragHandle: .custom-drag-handle
       data:
-        id: dd414f3d-e456-4353-a334-f04b44fde529
-        name: hi_demo2
+        id: default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
+        name: Order coming
         flags: []
         conditions: []
         global_conditions: []
         local_conditions: []
         response:
-          name: default_response5
+          name: order_coming_response
           type: text
           data:
-          - text: Hi from demo2
-        transition:
-          target_flow: ''
-          target_node: ''
-      width: 384
-      height: 168
-      selected: true
+          - priority: 1
+            text: Cool! Your order is coming!
+      measured:
+        width: 384
+        height: 183
+      selected: false
       dragging: false
-      positionAbsolute:
-        x: 288
-        'y': 192
+    - id: default_node_c7a00bfa-9cf0-4085-a981-24dfa30a86ae
+      type: default_node
+      position:
+        x: 864
+        'y': 576
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_c7a00bfa-9cf0-4085-a981-24dfa30a86ae
+        name: No cheese order
+        flags: []
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: no_cheese_response
+          type: text
+          data:
+          - priority: 1
+            text: Okay, so, your order is coming!
+      measured:
+        width: 384
+        height: 183
+      selected: false
+      dragging: false
     edges:
-    - id: e889b0a5-f1bc-48db-925a-c02dc801820d
-      source: e0cac0ac-1a75-4140-a44c-4b607063051e
-      sourceHandle: bcbd8498-bfb7-4f95-b077-ac1fead04a09
-      target: ec55bf32-d0c6-4d1d-9a41-dfd40e442c8a
+    - source: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
+      sourceHandle: condition_e1232013-7246-4a14-8d78-50493e481cbf
+      target: default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
+      type: default
+      id: xy-edge__default_node_f8421c8c-34ca-42b2-8842-746cc4de9244condition_e1232013-7246-4a14-8d78-50493e481cbf-default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
+    - source: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
+      sourceHandle: condition_4fb1760b-e20b-4e3b-ae7e-1b96ad028009
+      target: default_node_c7a00bfa-9cf0-4085-a981-24dfa30a86ae
+      type: default
+      id: xy-edge__default_node_f8421c8c-34ca-42b2-8842-746cc4de9244condition_4fb1760b-e20b-4e3b-ae7e-1b96ad028009-default_node_c7a00bfa-9cf0-4085-a981-24dfa30a86ae
     viewport:
-      x: 0
-      'y': 0
-      zoom: 1
-slots:
-  person:
-    id: "person-id"
-    type: "GroupSlot"
-    programmer:
-      id: "prog-id"
-      type: "GroupSlot"
-      username:
-        id: "username-id"
-        type: "RegexpSlot"
-        regexp: "username is ([a-zA-Z]+)"
-        match_group_idx: 1
-      email:
-        id: "email-id"
-        type: "RegexpSlot"
-        regexp: "email is ([a-z@.A-Z]+)"
-        match_group_idx: 1
-    admin:
-      id: "admin-id"
-      type: "RegexpSlot"
-      regexp: "access to ([a-zA-Z]+)"
-  friend:
-    id: "friend-id"
-    type: "GroupSlot"
-    first_name:
-      id: "fn-id"
-      type: "RegexpSlot"
-      regexp: "^[A-Z][a-z]+?(?= )"
-    last_name:
-      id: "ls-id"
-      type: "RegexpSlot"
-      regexp: "(?<= )[A-Z][a-z]+"
+      x: 148.70459858152503
+      'y': 195.69419301616148
+      zoom: 0.5876760818796956
+slots: {}
+interface:
+  cli: {}
