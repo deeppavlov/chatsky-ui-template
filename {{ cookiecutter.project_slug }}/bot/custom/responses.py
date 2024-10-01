@@ -1,4 +1,15 @@
-from dff import Pipeline
-from dff.script import Context, TRANSITIONS, RESPONSE, Message
-
-
+from chatsky import (
+    TRANSITIONS,
+    RESPONSE,
+    Context,
+    Message,
+    Pipeline,
+    Transition as Tr,
+    conditions as cnd,
+    responses as rsp,
+    destinations as dst,
+    BaseResponse,
+    MessageInitTypes,
+    AnyResponse,
+    AbsoluteNodeLabel,
+)
