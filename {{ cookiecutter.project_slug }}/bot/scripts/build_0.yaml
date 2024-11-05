@@ -1,0 +1,85 @@
+fallback_label:
+- Greeting
+- Beginning of conversation
+messenger_interface:
+  chatsky.messengers.console.CLIMessengerInterface: {}
+script:
+  Global:
+    Global node:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Global node response
+      TRANSITIONS: []
+  Greeting:
+    Beginning of conversation:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Hello!
+      TRANSITIONS:
+      - cnd:
+          custom.conditions.hello_cnd: null
+        dst:
+        - Greeting
+        - Weather discussion
+        priority: 1
+    Question about work:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Okay, bye!
+      TRANSITIONS: []
+    Weather discussion:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Do you want a pizza?
+      TRANSITIONS:
+      - cnd:
+          custom.conditions.yes_cnd: null
+        dst:
+        - Order
+        - Order pizza
+        priority: 1
+      - cnd:
+          custom.conditions.no_cnd: null
+        dst:
+        - Greeting
+        - Question about work
+        priority: 1
+  Order:
+    No cheese order:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Okay, so, your order is coming!
+      TRANSITIONS: []
+    Order coming:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Cool! Your order is coming!
+      TRANSITIONS: []
+    Order pizza:
+      PRE_TRANSITION: {}
+      RESPONSE:
+        chatsky.Message:
+          text: Some cheese in pizza?
+      TRANSITIONS:
+      - cnd:
+          custom.conditions.yes_cnd: null
+        dst:
+        - Order
+        - Order coming
+        priority: 1
+      - cnd:
+          custom.conditions.no_cnd: null
+        dst:
+        - Order
+        - No cheese order
+        priority: 1
+slots: {}
+start_label:
+- Greeting
+- Beginning of conversation
