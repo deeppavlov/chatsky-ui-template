@@ -2,33 +2,7 @@ flows:
 - id: GLOBAL
   name: Global
   description: This is Global Flow. It will be able to use soon...
-  color: '#3300FF'
-  data:
-    nodes:
-    - id: 1423040b-eb65-4c3d-b7cc-98835cb5319b
-      type: default_node
-      data:
-        id: GLOBAL_NODE
-        flags: []
-        conditions: []
-        global_conditions: []
-        local_conditions: []
-        name: Global node
-        response:
-          id: GLOBAL_NODE_RESPONSE
-          name: global_response
-          type: text
-          data:
-          - text: Global node response
-            priority: 1
-      position:
-        x: 0
-        'y': 0
-    edges: []
-    viewport:
-      x: 0
-      'y': 0
-      zoom: 1
+  color: '#3310FF'
 - name: Greeting
   description: ''
   color: '#00CC99'
@@ -50,13 +24,13 @@ flows:
         - fallback
         conditions:
         - id: condition_43773562-f93e-4635-ba0a-43e115da64b7
-          name: hello_cnd
+          name: HelloCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class hello_cnd(BaseCondition):\n    async def call(self, ctx:\
+              action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"hello\"\
                 )(ctx)"
         global_conditions: []
@@ -83,22 +57,22 @@ flows:
         flags: []
         conditions:
         - id: condition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d
-          name: yes_cnd
+          name: YesCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class yes_cnd(BaseCondition):\n    async def call(self, ctx:\
+              action: "class YesCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
         - id: condition_7b2bc7e8-4242-45c1-8ec9-99a149704582
-          name: no_cnd
+          name: NoCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class no_cnd(BaseCondition):\n    async def call(self, ctx:\
+              action: "class NoCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
         global_conditions: []
         local_conditions: []
@@ -193,22 +167,22 @@ flows:
         flags: []
         conditions:
         - id: condition_e1232013-7246-4a14-8d78-50493e481cbf
-          name: yes_cnd
+          name: YesCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class yes_cnd(BaseCondition):\n    async def call(self, ctx:\
+              action: "class YesCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
         - id: condition_4fb1760b-e20b-4e3b-ae7e-1b96ad028009
-          name: no_cnd
+          name: NoCnd
           type: python
           data:
             priority: 1
             transition_type: manual
             python:
-              action: "class no_cnd(BaseCondition):\n    async def call(self, ctx:\
+              action: "class NoCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
         global_conditions: []
         local_conditions: []
