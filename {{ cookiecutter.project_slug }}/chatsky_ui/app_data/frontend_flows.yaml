@@ -3,6 +3,32 @@ flows:
   name: Global
   description: This is Global Flow. It will be able to use soon...
   color: '#3310FF'
+  data:
+    nodes:
+    - id: 1423040b-eb65-4c3d-b7cc-98835cb5319b
+      type: default_node
+      data:
+        id: GLOBAL_NODE
+        flags: []
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        name: Global node
+        response:
+          id: GLOBAL_NODE_RESPONSE
+          name: global_response
+          type: text
+          data:
+          - text: Global node response
+            priority: 1
+      position:
+        x: 0
+        'y': 0
+    edges: []
+    viewport:
+      x: 0
+      'y': 0
+      zoom: 1
 - name: Greeting
   description: ''
   color: '#00CC99'
@@ -261,4 +287,4 @@ flows:
       zoom: 0.5876760818796956
 slots: {}
 interface:
-  cli: {}
+  http: {}

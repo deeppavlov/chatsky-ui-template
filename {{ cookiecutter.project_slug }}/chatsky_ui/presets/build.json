@@ -1,6 +1,6 @@
 {
   "success": {
-    "cmd": "bash $work_directory/chatsky_ui/bin/builds/success_build.sh $build_id"
+    "cmd": "bash $work_directory/chatsky_ui/bin/builds/success_build.sh"
   },
   "failure": {
     "cmd": "bash $work_directory/chatsky_ui/bin/builds/failed_build.sh"
