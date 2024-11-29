@@ -2,10 +2,13 @@ fallback_label:
 - Greeting
 - Beginning of conversation
 messenger_interface:
-  chatsky.messengers.console.CLIMessengerInterface: {}
+  chatsky.messengers.HTTPMessengerInterface: {}
 script:
   Global:
     Global node:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
@@ -13,68 +16,86 @@ script:
       TRANSITIONS: []
   Greeting:
     Beginning of conversation:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Hello!
       TRANSITIONS:
       - cnd:
-          custom.conditions.hello_cnd: null
+          custom.conditions.HelloCnd: null
         dst:
         - Greeting
         - Weather discussion
         priority: 1
     Question about work:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Okay, bye!
       TRANSITIONS: []
     Weather discussion:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Do you want a pizza?
       TRANSITIONS:
       - cnd:
-          custom.conditions.yes_cnd: null
+          custom.conditions.YesCnd: null
         dst:
         - Order
         - Order pizza
         priority: 1
       - cnd:
-          custom.conditions.no_cnd: null
+          custom.conditions.NoCnd: null
         dst:
         - Greeting
         - Question about work
         priority: 1
   Order:
     No cheese order:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Okay, so, your order is coming!
       TRANSITIONS: []
     Order coming:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Cool! Your order is coming!
       TRANSITIONS: []
     Order pizza:
+      PRE_RESPONSE:
+        fill:
+          chatsky.processing.FillTemplate: null
       PRE_TRANSITION: {}
       RESPONSE:
         chatsky.Message:
           text: Some cheese in pizza?
       TRANSITIONS:
       - cnd:
-          custom.conditions.yes_cnd: null
+          custom.conditions.YesCnd: null
         dst:
         - Order
         - Order coming
         priority: 1
       - cnd:
-          custom.conditions.no_cnd: null
+          custom.conditions.NoCnd: null
         dst:
         - Order
         - No cheese order
