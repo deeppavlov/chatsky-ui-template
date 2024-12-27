@@ -12,17 +12,17 @@ from chatsky import (
 )
 
 
-class hello_cnd(BaseCondition):
+class HelloCnd(BaseCondition):
 
     async def call(self, ctx: Context) -> bool:
         return await cnd.ExactMatch('hello')(ctx)
 
-class yes_cnd(BaseCondition):
+class YesCnd(BaseCondition):
 
     async def call(self, ctx: Context) -> bool:
         return await cnd.ExactMatch('yes')(ctx)
 
-class no_cnd(BaseCondition):
+class NoCnd(BaseCondition):
 
     async def call(self, ctx: Context) -> bool:
         return await cnd.ExactMatch('no')(ctx)
