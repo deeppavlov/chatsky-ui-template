@@ -3,7 +3,7 @@
     name: string
     end_status: success
     preset: string
-    messanger: telegram
+    messenger: telegram
   status: completed
   timestamp: '2024-04-08T21:12:49'
   port: null
