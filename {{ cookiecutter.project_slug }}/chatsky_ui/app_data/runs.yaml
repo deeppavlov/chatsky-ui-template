@@ -4,6 +4,7 @@
     end_status: success
     preset: string
     build_name: string
+    tg_bot_token: SOME_TOKEN
   build_id: 0
   status: completed
   timestamp: '2024-04-08T12:55:30'
