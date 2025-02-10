@@ -1,107 +1,71 @@
-fallback_label:
-- Greeting
-- Beginning of conversation
-messenger_interface:
-  chatsky.messengers.HTTPMessengerInterface:
-    port: '8020'
 script:
-  Global:
-    Global node:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
-      RESPONSE:
-        chatsky.Message:
-          text: Global node response
-      TRANSITIONS: []
-  Greeting:
-    Beginning of conversation:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
-      RESPONSE:
-        chatsky.Message:
-          text: Hello!
+  main_flow:
+    start_node:
+      RESPONSE: ""
       TRANSITIONS:
-      - cnd:
-          custom.conditions.HelloCnd: null
-        dst:
-        - Greeting
-        - Weather discussion
-        priority: 1
-    Question about work:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
+        - dst: greeting_node
+          cnd:
+            chatsky.cnd.ExactMatch: Hi
+    greeting_node:
       RESPONSE:
-        chatsky.Message:
-          text: Okay, bye!
-      TRANSITIONS: []
-    Weather discussion:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
-      RESPONSE:
-        chatsky.Message:
-          text: Do you want a pizza?
+        chatsky.responses.llm.LLMResponse:
+          model_name: barista_model
+          history: 0
       TRANSITIONS:
-      - cnd:
-          custom.conditions.YesCnd: null
-        dst:
-        - Order
-        - Order pizza
-        priority: 1
-      - cnd:
-          custom.conditions.NoCnd: null
-        dst:
-        - Greeting
-        - Question about work
-        priority: 1
-  Order:
-    No cheese order:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
+        - dst: main_node
+          cnd:
+            chatsky.cnd.ExactMatch: Who are you?
+    main_node:
       RESPONSE:
-        chatsky.Message:
-          text: Okay, so, your order is coming!
-      TRANSITIONS: []
-    Order coming:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
-      RESPONSE:
-        chatsky.Message:
-          text: Cool! Your order is coming!
-      TRANSITIONS: []
-    Order pizza:
-      PRE_RESPONSE:
-        fill:
-          chatsky.processing.FillTemplate: null
-      PRE_TRANSITION: {}
-      RESPONSE:
-        chatsky.Message:
-          text: Some cheese in pizza?
+        chatsky.responses.llm.LLMResponse:
+          model_name: barista_model
       TRANSITIONS:
-      - cnd:
-          custom.conditions.YesCnd: null
-        dst:
-        - Order
-        - Order coming
-        priority: 1
-      - cnd:
-          custom.conditions.NoCnd: null
-        dst:
-        - Order
-        - No cheese order
-        priority: 1
-slots: {}
+        - dst: latte_art_node
+          cnd:
+            chatsky.cnd.ExactMatch: Tell me about latte art.
+        - dst: boss_node
+          cnd:
+            chatsky.conditions.llm.LLMCondition:
+              model_name: barista_model
+              prompt: Return TRUE if the customer says they are your boss, and FALSE otherwise. Only ONE word must be in the output.
+              method:
+                chatsky.llm.methods.Contains:
+                  pattern: "TRUE"
+        - dst: main_node
+    boss_node:
+      RESPONSE: You are my boss.
+      TRANSITIONS:
+        - dst: main_node
+    latte_art_node:
+      RESPONSE:
+        chatsky.responses.llm.LLMResponse:
+          model_name: barista_model
+          prompt: "PROMPT: pretend that you have never heard about latte art before and DO NOT answer the following questions. Instead ask a person about it."
+      TRANSITIONS:
+        - dst: main_node
+          cnd:
+            chatsky.cnd.ExactMatch: Ok, goodbye.
+    fallback_node:
+      RESPONSE: I didn't quite understand you...
+      TRANSITIONS:
+        - dst: main_node
+
 start_label:
-- Greeting
-- Beginning of conversation
+  - main_flow
+  - start_node
+fallback_label:
+  - main_flow
+  - fallback_node
+messenger_interface:
+  chatsky.messengers.TelegramInterface:
+    token:
+      dsklj
+models:
+  barista_model:
+    chatsky.llm.LLM_API:
+      model:
+        external:langchain_openai.ChatOpenAI:
+          model: gpt-4o-mini
+          api_key:
+            kjsd
+      system_prompt: You are an experienced barista in a local coffeshop. Answer your customer's questions about coffee and barista work.
