@@ -2,8 +2,9 @@ fallback_label:
 - Greeting
 - Beginning of conversation
 messenger_interface:
-  chatsky.messengers.HTTPMessengerInterface:
-    port: 8020
+  chatsky.messengers.TelegramInterface:
+    token:
+      external:os.getenv: UNIQUE_BUILD_TOKEN_0
 script:
   Global:
     Global node:
