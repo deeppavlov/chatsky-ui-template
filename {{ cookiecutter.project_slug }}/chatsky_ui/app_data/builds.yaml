@@ -1,8 +1,12 @@
 - id: 0
-  preset_end_status: success
+  preset:
+    name: string
+    end_status: success
+    preset: string
+    messenger: telegram
   status: completed
   timestamp: '2024-04-08T21:12:49'
-  script_path: ../bot/scripts/build_0.json
+  port: null
   log_path: chatsky_ui/logs/builds/20240408/0_211249.log
   run_ids:
   - id: 0
