@@ -15,8 +15,9 @@ logging.basicConfig(level=logging.INFO)
 @click.option("--script-path", required=True, help="Path to the script file")
 def main(script_path: Path, run_id: int = 0):
     separator = "///" if system() == "Windows" else "////"
-    db_path = Path(f"{settings.context_storage_dir}/run_{run_id}.db")
-    db_uri = f"sqlite+aiosqlite:{separator}{db_path.absolute()}"
+    db_file = Path(f"{settings.context_storage_dir}/run_{run_id}.db")
+    db_file.touch(exist_ok=True)
+    db_uri = f"sqlite+aiosqlite:{separator}{db_file.absolute()}"
     db = context_storage_factory(db_uri)
 
     pipeline = Pipeline.from_file(
