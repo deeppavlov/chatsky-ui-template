@@ -5,20 +5,18 @@ import click
 
 from chatsky import Pipeline
 from chatsky.context_storages import context_storage_factory
-from chatsky_ui.core.config import settings
 
 
 logging.basicConfig(level=logging.INFO)
 
 
 @click.command()
-@click.option("--script-path", required=True, help="Path to the script file")
-@click.option("--run-id", required=True, help="Run ID")
-def main(script_path: Path, run_id: int):
+@click.option("--script-path", required=True, type=Path, help="Path to the script file")
+@click.option("--dialogue-db-path", required=True, type=Path, help="Path to the context storage")
+def main(script_path: Path, dialogue_db_path: Path):
     separator = "///" if system() == "Windows" else "////"
-    db_file = Path(f"{settings.context_storage_dir}/run_{run_id}.db")
-    db_file.touch(exist_ok=True)
-    db_uri = f"sqlite+aiosqlite:{separator}{db_file.absolute()}"
+
+    db_uri = f"sqlite+aiosqlite:{separator}{dialogue_db_path.absolute()}"
     db = context_storage_factory(db_uri)
 
     pipeline = Pipeline.from_file(
