@@ -47,7 +47,6 @@ flows:
         name: Beginning of conversation
         flags:
         - start
-        - fallback
         conditions:
         - id: condition_43773562-f93e-4635-ba0a-43e115da64b7
           name: HelloCnd
@@ -59,6 +58,14 @@ flows:
               action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx:\
                 \ Context) -> bool:\n        return await cnd.ExactMatch(\"hello\"\
                 )(ctx)"
+        - id: condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9
+          name: start_cnd
+          type: basic
+          data:
+            structure: exactMatch
+            text: /start
+            priority: 1
+            transition_type: manual
         global_conditions: []
         local_conditions: []
         response:
@@ -69,8 +76,8 @@ flows:
             text: Hello!
       measured:
         width: 384
-        height: 228
-      selected: false
+        height: 283
+      selected: true
     - id: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
       type: default_node
       position:
@@ -110,7 +117,7 @@ flows:
             text: Do you want a pizza?
       measured:
         width: 384
-        height: 281
+        height: 283
       selected: false
       dragging: false
     - id: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
@@ -154,6 +161,38 @@ flows:
         height: 102
       selected: false
       dragging: false
+    - id: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
+      type: default_node
+      position:
+        x: 768
+        'y': 768
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
+        name: Talking about hobbies
+        flags:
+        - fallback
+        conditions:
+        - id: condition_a1743d8f-bd35-4076-b583-d2a5c8425da5
+          name: NewCnd
+          type: basic
+          data:
+            structure: exactMatch
+            text: /start
+            priority: 1
+            transition_type: manual
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: fall
+          type: text
+          data:
+          - priority: 1
+            text: Oops, something wrong happened
+      measured:
+        width: 384
+        height: 229
+      selected: false
     edges:
     - source: default_node_b729a99a-740f-47d4-be6c-39d122639a41
       sourceHandle: condition_43773562-f93e-4635-ba0a-43e115da64b7
@@ -170,9 +209,19 @@ flows:
       target: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
       type: default
       id: xy-edge__default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721acondition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d-link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
+    - source: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
+      sourceHandle: condition_a1743d8f-bd35-4076-b583-d2a5c8425da5
+      target: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      type: default
+      id: xy-edge__default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9condition_a1743d8f-bd35-4076-b583-d2a5c8425da5-default_node_b729a99a-740f-47d4-be6c-39d122639a41
+    - source: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      sourceHandle: condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9
+      target: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      type: default
+      id: xy-edge__default_node_b729a99a-740f-47d4-be6c-39d122639a41condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9-default_node_b729a99a-740f-47d4-be6c-39d122639a41
     viewport:
-      x: -10.295955750421058
-      'y': 189.6832588410827
+      x: 67.70404424957894
+      'y': 154.6832588410827
       zoom: 0.5897290855183465
 - name: Order
   description: ''
@@ -285,4 +334,3 @@ flows:
       x: 148.70459858152503
       'y': 195.69419301616148
       zoom: 0.5876760818796956
-slots: {}
