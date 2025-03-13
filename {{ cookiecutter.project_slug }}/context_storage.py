@@ -4,7 +4,7 @@ Chatsky-UI Context Storage
 In Chatsky-UI, ctx_id = `run_id` + "_" + `user_id`, where `ctx_id` is the resulting id stored in the SQLite database,
 `run_id` is the id of the Chatsky-UI `Run` process and `user_id` is what Chatsky would use as the `ctx_id` by default,
 but we added the `run_id` in the beginning to differentiate between, say, Telegram and Whatsapp users
-(so that their user_id's wouldn't intersect), and to also store all contexts in the same file/database.
+(so that their user_id's wouldn't intersect).
 """
 
 from chatsky import SQLContextStorage
