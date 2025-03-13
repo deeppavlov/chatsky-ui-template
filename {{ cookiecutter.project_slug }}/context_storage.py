@@ -7,6 +7,7 @@ but we added the `run_id` in the beginning to differentiate between, say, Telegr
 (so that their user_id's wouldn't intersect).
 """
 
+from typing import Hashable
 from chatsky import SQLContextStorage
 
 class ChatskyUIContextStorage(SQLContextStorage):
