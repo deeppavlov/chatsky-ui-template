@@ -13,8 +13,8 @@ logging.basicConfig(level=logging.INFO)
 @click.command()
 @click.option("--script-path", required=True, type=Path, help="Path to the script file")
 @click.option("--dialogue-db-path", required=True, type=Path, help="Path to the context storage")
-@click.option("--run-id", required=True, type=Path, help="ID of this `Run` process")
-def main(script_path: Path, dialogue_db_path: Path):
+@click.option("--run-id", required=True, type=int, help="ID of this `Run` process")
+def main(script_path: Path, dialogue_db_path: Path, run_id: int):
     separator = "///" if system() == "Windows" else "////"
 
     # TODO: (decide before merge) 'dialogue_db_path.absolute' could just be settings.database_path,
