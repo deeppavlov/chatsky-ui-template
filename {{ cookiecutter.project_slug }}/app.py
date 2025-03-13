@@ -21,7 +21,7 @@ def main(script_path: Path, dialogue_db_path: Path, run_id: int):
     # which removes an unnecessary parameter, making the code easier to read.
     # But I'm not sure if that's correct, so I placed this comment here.
     db_uri = f"sqlite+aiosqlite:{separator}{dialogue_db_path.absolute()}"
-    db = ChatskyUIContextStorage(db_uri)
+    db = ChatskyUIContextStorage(db_uri, run_id)
 
     pipeline = Pipeline.from_file(
         file=script_path,
