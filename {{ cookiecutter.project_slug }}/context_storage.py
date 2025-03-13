@@ -8,7 +8,7 @@ but we added the `run_id` in the beginning to differentiate between, say, Telegr
 """
 
 from typing import Hashable
-from chatsky import SQLContextStorage
+from chatsky.context_storages import SQLContextStorage
 
 class ChatskyUIContextStorage(SQLContextStorage):
     """A 'wrapper' class for all methods using `ctx_id`, making them use composite id's."""
