@@ -4,7 +4,7 @@ from platform import system
 import click
 
 from chatsky import Pipeline
-from .context_storage import ChatskyUIContextStorage
+from context_storage import ChatskyUIContextStorage
 
 
 logging.basicConfig(level=logging.INFO)
