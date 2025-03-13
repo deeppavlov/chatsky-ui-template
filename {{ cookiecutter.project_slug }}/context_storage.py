@@ -13,7 +13,7 @@ from chatsky.context_storages import SQLContextStorage
 
 class ChatskyUIContextStorage(SQLContextStorage):
     """A 'wrapper' class for all methods using `ctx_id`, making them use composite id's."""
-    def __init__(self, path: str, run_id: str, **kwargs):
+    def __init__(self, path: str, run_id: int, **kwargs):
         self.run_id = run_id
         super().__init__(path, **kwargs)
 
