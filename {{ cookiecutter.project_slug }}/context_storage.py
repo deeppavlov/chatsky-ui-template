@@ -22,13 +22,13 @@ class ChatskyUIContextStorage(SQLContextStorage):
         return f"{self.run_id}_{str(key)}"
 
     async def set_item_async(self, key: Hashable, value: Context):
-        super().set_item_async(self.get_ctx_id(key), value)
+        await super().set_item_async(self.get_ctx_id(key), value)
 
     async def get_item_async(self, key: Hashable) -> Context:
-        super().get_item_async(self.get_ctx_id(key))
+        await super().get_item_async(self.get_ctx_id(key))
 
     async def del_item_async(self, key: Hashable):
-        super().del_item_async(self.get_ctx_id(key))
+        await super().del_item_async(self.get_ctx_id(key))
 
     async def contains_async(self, key: Hashable) -> bool:
-        super().contains_async(self.get_ctx_id(key))
+        await super().contains_async(self.get_ctx_id(key))
