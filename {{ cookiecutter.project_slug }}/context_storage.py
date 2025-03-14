@@ -25,6 +25,7 @@ class ChatskyUIContextStorage(SQLContextStorage):
         await super().set_item_async(self.get_ctx_id(key), value)
 
     async def get_item_async(self, key: Hashable) -> Context:
+        raise Exception(f"Trying to get {self.get_ctx_id(key)}")
         await super().get_item_async(self.get_ctx_id(key))
 
     async def del_item_async(self, key: Hashable):
