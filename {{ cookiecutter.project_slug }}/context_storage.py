@@ -19,19 +19,16 @@ class ChatskyUIContextStorage(SQLContextStorage):
 
     def get_ctx_id(self, key: Hashable):
         """Formats `ctx_id` to how the context id's are stored in the Chatsky-UI database."""
-        return key
         return f"{self.run_id}_{str(key)}"
-"""
+
     async def set_item_async(self, key: Hashable, value: Context):
         await super().set_item_async(self.get_ctx_id(key), value)
 
     async def get_item_async(self, key: Hashable) -> Context:
-        # raise Exception(f"Trying to get {self.get_ctx_id(key)}")
-        await super().get_item_async(self.get_ctx_id(key))
+        return await super().get_item_async(self.get_ctx_id(key))
 
     async def del_item_async(self, key: Hashable):
         await super().del_item_async(self.get_ctx_id(key))
 
     async def contains_async(self, key: Hashable) -> bool:
-        await super().contains_async(self.get_ctx_id(key))
-"""
+        return await super().contains_async(self.get_ctx_id(key))
