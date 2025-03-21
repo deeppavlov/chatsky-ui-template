@@ -4,7 +4,6 @@ from platform import system
 import click
 
 from chatsky import Pipeline
-from chatsky.context_storages import context_storage_factory
 from context_storage import ChatskyUIContextStorage
 
 
