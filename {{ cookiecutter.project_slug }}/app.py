@@ -5,7 +5,7 @@ import click
 
 from chatsky import Pipeline
 from chatsky.context_storages import context_storage_factory
-from context_storage import ChatskyUIContextStorage
+from chatsky_ui.clients.context_storage import ChatskyUIContextStorage
 
 
 logging.basicConfig(level=logging.INFO)
