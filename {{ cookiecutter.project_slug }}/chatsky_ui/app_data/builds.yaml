@@ -1,8 +1,8 @@
 - id: 0
   preset:
-    name: string
+    name: Build 0
     end_status: success
-    preset: string
+    preset: null
     messenger: telegram
   status: completed
   timestamp: '2024-04-08T21:12:49'
