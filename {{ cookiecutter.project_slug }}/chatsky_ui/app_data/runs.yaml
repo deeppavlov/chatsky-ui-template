@@ -6,7 +6,7 @@
     build_name: Build 0
     tg_bot_token: SOME_TOKEN
   build_id: 0
-  status: completed
+  status: stopped
   timestamp: '2024-04-08T12:55:30'
   messenger: telegram
   port: null
