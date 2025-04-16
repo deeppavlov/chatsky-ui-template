@@ -36,119 +36,11 @@ flows:
   id: flow_b7d40362-31dc-4473-aa98-d14d0a3113f8
   data:
     nodes:
-    - id: default_node_b729a99a-740f-47d4-be6c-39d122639a41
-      type: default_node
-      position:
-        x: 192
-        'y': 384
-      dragHandle: .custom-drag-handle
-      data:
-        id: default_node_b729a99a-740f-47d4-be6c-39d122639a41
-        name: Beginning of conversation
-        flags:
-        - start
-        conditions:
-        - id: condition_43773562-f93e-4635-ba0a-43e115da64b7
-          name: HelloCnd
-          type: python
-          data:
-            priority: 1
-            transition_type: manual
-            python:
-              action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx:\
-                \ Context) -> bool:\n        return await cnd.ExactMatch(\"hello\"\
-                )(ctx)"
-        - id: condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9
-          name: start_cnd
-          type: basic
-          data:
-            structure: exactMatch
-            text: /start
-            priority: 1
-            transition_type: manual
-        global_conditions: []
-        local_conditions: []
-        response:
-          name: hello_response
-          type: text
-          data:
-          - priority: 1
-            text: Hello!
-      measured:
-        width: 384
-        height: 283
-      selected: true
-    - id: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
-      type: default_node
-      position:
-        x: 768
-        'y': 192
-      dragHandle: .custom-drag-handle
-      data:
-        id: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
-        name: Weather discussion
-        flags: []
-        conditions:
-        - id: condition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d
-          name: YesCnd
-          type: python
-          data:
-            priority: 1
-            transition_type: manual
-            python:
-              action: "class YesCnd(BaseCondition):\n    async def call(self, ctx:\
-                \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
-        - id: condition_7b2bc7e8-4242-45c1-8ec9-99a149704582
-          name: NoCnd
-          type: python
-          data:
-            priority: 1
-            transition_type: manual
-            python:
-              action: "class NoCnd(BaseCondition):\n    async def call(self, ctx:\
-                \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
-        global_conditions: []
-        local_conditions: []
-        response:
-          name: pizza_question
-          type: text
-          data:
-          - priority: 1
-            text: Do you want a pizza?
-      measured:
-        width: 384
-        height: 283
-      selected: false
-      dragging: false
-    - id: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
-      type: default_node
-      position:
-        x: 1344
-        'y': 480
-      dragHandle: .custom-drag-handle
-      data:
-        id: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
-        name: Question about work
-        flags: []
-        conditions: []
-        global_conditions: []
-        local_conditions: []
-        response:
-          name: bye_response
-          type: text
-          data:
-          - priority: 1
-            text: Okay, bye!
-      measured:
-        width: 384
-        height: 183
-      selected: false
-      dragging: false
     - id: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
       type: link_node
       position:
         x: 1344
-        'y': 192
+        'y': 96
       data:
         id: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
         name: Link
@@ -161,20 +53,105 @@ flows:
         height: 102
       selected: false
       dragging: false
-    - id: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
+    - id: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+      type: default_node
+      position:
+        x: 192
+        'y': 96
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+        name: Greeting_defNode_1
+        flags:
+        - start
+        conditions:
+        - id: condition_615aa9f2-1963-4aff-81ce-c52bbed1a248
+          name: HelloCnd
+          type: python
+          data:
+            priority: 1
+            transition_type: manual
+            python:
+              action: "class HelloCnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"hello\"\
+                )(ctx)"
+        - id: condition_4b25aa01-e972-48a4-8456-d1bf76726383
+          name: start_cnd
+          type: basic
+          data:
+            structure: exactMatch
+            text: /start
+            priority: 1
+            transition_type: manual
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: Greeting_DefResponse_1
+          type: text
+          data:
+          - priority: 1
+            text: Hello!
+      measured:
+        width: 384
+        height: 283
+      selected: false
+      dragging: false
+    - id: default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
       type: default_node
       position:
         x: 768
-        'y': 768
+        'y': -96
       dragHandle: .custom-drag-handle
       data:
-        id: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
-        name: Talking about hobbies
+        id: default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
+        name: Greeting_defNode_2
+        flags: []
+        conditions:
+        - id: condition_7e81879c-7361-4bb7-af78-34eddc24c9af
+          name: YesCnd
+          type: python
+          data:
+            priority: 1
+            transition_type: manual
+            python:
+              action: "class YesCnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"yes\")(ctx)"
+        - id: condition_9d2e4850-8038-4d67-bee0-7a30fbcb8fb9
+          name: NoCnd
+          type: python
+          data:
+            priority: 1
+            transition_type: manual
+            python:
+              action: "class NoCnd(BaseCondition):\n    async def call(self, ctx:\
+                \ Context) -> bool:\n        return await cnd.ExactMatch(\"no\")(ctx)"
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: Greeting_DefResponse_2
+          type: text
+          data:
+          - priority: 1
+            text: Do you want a pizza?
+      measured:
+        width: 384
+        height: 283
+      selected: false
+      dragging: false
+    - id: default_node_7aae23c8-af82-467c-8958-bd8f1d939590
+      type: default_node
+      position:
+        x: 768
+        'y': 480
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_7aae23c8-af82-467c-8958-bd8f1d939590
+        name: Greeting_defNode_3
         flags:
         - fallback
         conditions:
-        - id: condition_a1743d8f-bd35-4076-b583-d2a5c8425da5
-          name: NewCnd
+        - id: condition_d0ab27dd-d626-4768-af7d-eb1c766ed252
+          name: to_start_node
           type: basic
           data:
             structure: exactMatch
@@ -193,34 +170,59 @@ flows:
         width: 384
         height: 229
       selected: false
+      dragging: false
+    - id: default_node_591afa55-fd45-437f-9ab8-413c8ff10528
+      type: default_node
+      position:
+        x: 1344
+        'y': 576
+      dragHandle: .custom-drag-handle
+      data:
+        id: default_node_591afa55-fd45-437f-9ab8-413c8ff10528
+        name: Greeting_defNode_4
+        flags: []
+        conditions: []
+        global_conditions: []
+        local_conditions: []
+        response:
+          name: Greeting_DefResponse_3
+          type: text
+          data:
+          - priority: 1
+            text: Okay, bye!
+      measured:
+        width: 384
+        height: 183
+      selected: true
+      dragging: true
     edges:
-    - source: default_node_b729a99a-740f-47d4-be6c-39d122639a41
-      sourceHandle: condition_43773562-f93e-4635-ba0a-43e115da64b7
-      target: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
+    - source: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+      sourceHandle: condition_4b25aa01-e972-48a4-8456-d1bf76726383
+      target: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
       type: default
-      id: xy-edge__default_node_b729a99a-740f-47d4-be6c-39d122639a41condition_43773562-f93e-4635-ba0a-43e115da64b7-default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
-    - source: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
-      sourceHandle: condition_7b2bc7e8-4242-45c1-8ec9-99a149704582
-      target: default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
-      type: default
-      id: xy-edge__default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721acondition_7b2bc7e8-4242-45c1-8ec9-99a149704582-default_node_2c7d5013-dd83-49bf-8e9e-64fca1de75e8
-    - source: default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721a
-      sourceHandle: condition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d
+      id: xy-edge__default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070condition_4b25aa01-e972-48a4-8456-d1bf76726383-default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+    - source: default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
+      sourceHandle: condition_7e81879c-7361-4bb7-af78-34eddc24c9af
       target: link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
       type: default
-      id: xy-edge__default_node_b28230f8-b1fb-4f8b-96bf-e83a7127721acondition_901cc4d0-6b1e-4c1f-aeb2-e5c785d1af9d-link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
-    - source: default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9
-      sourceHandle: condition_a1743d8f-bd35-4076-b583-d2a5c8425da5
-      target: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      id: xy-edge__default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64condition_7e81879c-7361-4bb7-af78-34eddc24c9af-link_node_716b0ab6-00f1-4731-bfb4-b7c151f19968
+    - source: default_node_7aae23c8-af82-467c-8958-bd8f1d939590
+      sourceHandle: condition_d0ab27dd-d626-4768-af7d-eb1c766ed252
+      target: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
       type: default
-      id: xy-edge__default_node_a0752e3b-bf23-4253-be8b-af6df7536ae9condition_a1743d8f-bd35-4076-b583-d2a5c8425da5-default_node_b729a99a-740f-47d4-be6c-39d122639a41
-    - source: default_node_b729a99a-740f-47d4-be6c-39d122639a41
-      sourceHandle: condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9
-      target: default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      id: xy-edge__default_node_7aae23c8-af82-467c-8958-bd8f1d939590condition_d0ab27dd-d626-4768-af7d-eb1c766ed252-default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+    - source: default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
+      sourceHandle: condition_9d2e4850-8038-4d67-bee0-7a30fbcb8fb9
+      target: default_node_591afa55-fd45-437f-9ab8-413c8ff10528
       type: default
-      id: xy-edge__default_node_b729a99a-740f-47d4-be6c-39d122639a41condition_20656a80-d5cd-43ef-a070-7b7a2792a5d9-default_node_b729a99a-740f-47d4-be6c-39d122639a41
+      id: xy-edge__default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64condition_9d2e4850-8038-4d67-bee0-7a30fbcb8fb9-default_node_591afa55-fd45-437f-9ab8-413c8ff10528
+    - source: default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070
+      sourceHandle: condition_615aa9f2-1963-4aff-81ce-c52bbed1a248
+      target: default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
+      type: default
+      id: xy-edge__default_node_a4d79d17-0ef3-49f6-95c8-fa6960e33070condition_615aa9f2-1963-4aff-81ce-c52bbed1a248-default_node_2caa1ca3-84e2-4b30-9310-5a8c187b3b64
     viewport:
-      x: 67.70404424957894
+      x: 70.70404424957894
       'y': 154.6832588410827
       zoom: 0.5897290855183465
 - name: Order
@@ -269,13 +271,13 @@ flows:
             text: Some cheese in pizza?
       measured:
         width: 384
-        height: 281
+        height: 283
       selected: false
     - id: default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
       type: default_node
       position:
         x: 864
-        'y': 384
+        'y': 192
       dragHandle: .custom-drag-handle
       data:
         id: default_node_263fa66f-21bf-49c4-9f7c-36eca0601c5d
@@ -299,7 +301,7 @@ flows:
       type: default_node
       position:
         x: 864
-        'y': 576
+        'y': 672
       dragHandle: .custom-drag-handle
       data:
         id: default_node_c7a00bfa-9cf0-4085-a981-24dfa30a86ae
@@ -317,8 +319,8 @@ flows:
       measured:
         width: 384
         height: 183
-      selected: false
-      dragging: false
+      selected: true
+      dragging: true
     edges:
     - source: default_node_f8421c8c-34ca-42b2-8842-746cc4de9244
       sourceHandle: condition_e1232013-7246-4a14-8d78-50493e481cbf
