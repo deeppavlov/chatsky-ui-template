@@ -11,18 +11,18 @@ logging.basicConfig(level=logging.INFO)
 
 
 @click.command()
-@click.option("--script-path", required=True, type=Path, help="Path to the script file")
-@click.option("--dialogue-db-path", required=True, type=Path, help="Path to the context storage")
+@click.option("--working-dir", required=True, type=Path, help="Path to the script file")
 @click.option("--run-id", required=True, type=int, help="ID of this `Run` process")
-def main(script_path: Path, dialogue_db_path: Path, run_id: int):
+def main(working_dir: Path, run_id: int):
+    working_dir = Path(working_dir)
     separator = "///" if system() == "Windows" else "////"
 
-    db_uri = f"sqlite+aiosqlite:{separator}{dialogue_db_path.absolute()}"
+    db_uri = f"sqlite+aiosqlite:{separator}{working_dir.absolute() / 'bot' / 'databases' / 'context_storage.db'}"
     db = ChatskyUIContextStorage(db_uri, run_id)
 
     pipeline = Pipeline.from_file(
-        file=script_path,
-        custom_dir=Path(script_path).parent.parent / "custom",
+        file=working_dir / "bot" / "scripts" / "build.yaml",
+        custom_dir=working_dir / "bot" / "custom",
         context_storage=db,
     )
     pipeline.run()
